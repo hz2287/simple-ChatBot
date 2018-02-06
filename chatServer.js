@@ -58,20 +58,74 @@ function bot(data,socket,questionNum) {
   else if (questionNum == 1) {
   answer= 'So that means you are: ' + (2018-parseInt(input)) + ' years old, or I should say ' + (2018-parseInt(input)) + ' years young.';// output response
   waitTime =2000;
-  question = 'Where do you live?';			    	// load next question
+  question = 'Are you in the mood for movie?';			    	// load next question
   }
   else if (questionNum == 2) {
-  answer= ' Cool! I have never been to ' + input+'.';
-  waitTime =2000;
-  question = 'Whats your favorite Color?';			    	// load next question
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = "Perfect! Let's find a movie for you.";
+      waitTime =2000;
+      question = 'Do you like drama?';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        answer= "That's fine. Let's do some math then." // To be finished
+        question='How about now?';
+        waitTime =0;
+        questionNum--; // Here we go back in the question number this can end up in a loop
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
   }
   else if (questionNum == 3) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = 'I like drama, too!';
+      waitTime =2000;
+      question = 'How about romance, yes?';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
+        answer=''
+        question='How about now?';
+        waitTime =0;
+        questionNum--; // Here we go back in the question number this can end up in a loop
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
+  }
+  else if (questionNum == 4) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = 'So drama and romance... I think I found one. "Call Me by Your Name". I think you will like it';
+      waitTime =0;
+      question = '';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
+        answer=''
+        question='How about now?';
+        waitTime =0;
+        questionNum--; // Here we go back in the question number this can end up in a loop
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
+  }
+  else if (questionNum == 5) {
   answer= 'Ok, ' + input+' it is.';
   socket.emit('changeBG',input.toLowerCase());
   waitTime = 2000;
   question = 'Can you still read the font?';			    	// load next question
   }
-  else if (questionNum == 4) {
+  else if (questionNum == 6) {
     if(input.toLowerCase()==='yes'|| input===1){
       answer = 'Perfect!';
       waitTime =2000;
