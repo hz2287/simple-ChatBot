@@ -72,8 +72,8 @@ function bot(data,socket,questionNum) {
         question= '1+1=?';
         questionNum=questionNum + 6;
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -91,8 +91,8 @@ function bot(data,socket,questionNum) {
         question='How about Animation? Do you like it?';
         questionNum=questionNum+4;
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -109,8 +109,8 @@ function bot(data,socket,questionNum) {
         waitTime =2000;
         question = 'You like action?';
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -128,8 +128,8 @@ function bot(data,socket,questionNum) {
         question = 'Do you like crime?';
         questionNum++;
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -146,8 +146,8 @@ function bot(data,socket,questionNum) {
         waitTime =0;
         question = '';
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -165,8 +165,8 @@ function bot(data,socket,questionNum) {
         question = '';
         questionNum++;
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -184,8 +184,8 @@ function bot(data,socket,questionNum) {
         question = '';
         questionNum++;
     }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
       questionNum--;
       waitTime =0;
     }
@@ -198,44 +198,79 @@ function bot(data,socket,questionNum) {
       question = "12 X 12 = ?";
     }
     else {
-      answer = "Try again.";
-      question='';
+      answer = "";
+      question='Try again';
       questionNum--;
       waitTime = 0;
     }
   // load next question
   }
-  else if (questionNum == 5) {
-  answer= 'Ok, ' + input+' it is.';
-  socket.emit('changeBG',input.toLowerCase());
-  waitTime = 2000;
-  question = 'Can you still read the font?';			    	// load next question
-  }
-  else if (questionNum == 6) {
-    if(input.toLowerCase()==='yes'|| input===1){
-      answer = 'Perfect!';
-      waitTime =2000;
-      question = 'Whats your favorite place?';
+  else if (questionNum == 10) {
+    if (input == 144){
+      answer = "";
+      waitTime =0;
+      question = "Excellent! You are really good at math. Time for movies?";
     }
-    else if(input.toLowerCase()==='no'|| input===0){
-        socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
-        answer=''
-        question='How about now?';
-        waitTime =0;
-        questionNum--; // Here we go back in the question number this can end up in a loop
-    }else{
-      answer=' I did not understand you. Can you please answer with simply with yes or no.'
-      question='';
+
+    else{
+      answer=''
+      question='Think again. What is 12 X 12?';
       questionNum--;
       waitTime =0;
     }
   // load next question
   }
-  else{
-    answer= 'I have nothing more to say!';// output response
-    waitTime =0;
-    question = '';
+  else if (questionNum == 11) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = "Perfect! Let's find a movie for you.";
+      waitTime =2000;
+      question = 'Do you like drama?';
+      questionNum = 2;
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        answer= "May be next time? See you."
+        waitTime =0;
+        question= '';
+    }else{
+      answer=''
+      question='I did not understand you. Can you please answer with simply with yes or no.';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
   }
+
+  //else if (questionNum == 5) {
+  //answer= 'Ok, ' + input+' it is.';
+  //socket.emit('changeBG',input.toLowerCase());
+  //waitTime = 2000;
+  //question = 'Can you still read the font?';			    	// load next question
+  //}
+  //else if (questionNum == 6) {
+  //  if(input.toLowerCase()==='yes'|| input===1){
+  //    answer = 'Perfect!';
+  //    waitTime =2000;
+  //    question = 'Whats your favorite place?';
+  //  }
+  //  else if(input.toLowerCase()==='no'|| input===0){
+  //      socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
+  //      answer=''
+  //      question='How about now?';
+  //      waitTime =0;
+  //      questionNum--; // Here we go back in the question number this can end up in a loop
+  //  }else{
+  //    answer=' I did not understand you. Can you please answer with simply with yes or no.'
+  //    question='';
+  //    questionNum--;
+  //    waitTime =0;
+  //  }
+  // load next question
+  //}
+  //else{
+  //  answer= 'I have nothing more to say!';// output response
+  //  waitTime =0;
+  //  question = '';
+  //}
 
 
 /// We take the changed data and distribute it across the required objects.
