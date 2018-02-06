@@ -123,9 +123,10 @@ function bot(data,socket,questionNum) {
       question = 'History, yes or no?';
     }
     else if(input.toLowerCase()==='no'|| input===0){
-        answer = "That's fine. Let's find you something else.";
+        answer = "So you don't like action either.";
         waitTime =2000;
-        question = 'You like action?';
+        question = 'Do you like crime?';
+        questionNum++;
     }else{
       answer=' I did not understand you. Can you please answer with simply with yes or no.'
       question='';
@@ -152,6 +153,26 @@ function bot(data,socket,questionNum) {
     }
   // load next question
   }
+  else if (questionNum == 7) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = "Great! You like drama and crime, but not romance and action. I think you'll find All the Money in the World to your taste.";
+      waitTime =0;
+      question = '';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        answer = "Alright, you do like drama. But you don't like romance, action or crime. I guess you'll like Darkest Hour. It's my favorite!";
+        waitTime =0;
+        question = '';
+        questionNum++;
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
+  }
+
   else if (questionNum == 5) {
   answer= 'Ok, ' + input+' it is.';
   socket.emit('changeBG',input.toLowerCase());
