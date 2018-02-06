@@ -88,8 +88,8 @@ function bot(data,socket,questionNum) {
     else if(input.toLowerCase()==='no'|| input===0){
         answer= "That's fine. Let's find something else.";
         waitTime =2000;
-        question='How about now?';
-        questionNum--; // Here we go back in the question number this can end up in a loop
+        question='How about Animation? Do you like it?';
+        questionNum=questionNum+4;
     }else{
       answer=' I did not understand you. Can you please answer with simply with yes or no.'
       question='';
@@ -172,7 +172,25 @@ function bot(data,socket,questionNum) {
     }
   // load next question
   }
-
+  else if (questionNum == 8) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = "OK. You don't like drama. But you do like animation. Let's watch Coco. It's a great movie";
+      waitTime =0;
+      question = '';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        answer = "You don't like drama or animation. But I think you'll like Colao. Because I like it!";
+        waitTime =0;
+        question = '';
+        questionNum++;
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
+  }
   else if (questionNum == 5) {
   answer= 'Ok, ' + input+' it is.';
   socket.emit('changeBG',input.toLowerCase());
