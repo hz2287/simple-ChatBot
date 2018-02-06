@@ -53,10 +53,10 @@ function bot(data,socket,questionNum) {
   if (questionNum == 0) {
   answer= 'Hello ' + input + ' :-)';// output response
   waitTime =2000;
-  question = 'How old are you?';			    	// load next question
+  question = 'In what year were you born?';			    	// load next question
   }
   else if (questionNum == 1) {
-  answer= 'Really ' + input + ' Years old? So that means you where born in: ' + (2018-parseInt(input));// output response
+  answer= 'So that means you are: ' + (2018-parseInt(input)) + ' years old, or I should say ' + (2018-parseInt(input)) + ' years young.';// output response
   waitTime =2000;
   question = 'Where do you live?';			    	// load next question
   }
