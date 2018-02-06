@@ -68,9 +68,9 @@ function bot(data,socket,questionNum) {
     }
     else if(input.toLowerCase()==='no'|| input===0){
         answer= "That's fine. Let's do some math then." // To be finished
-        question='How about now?';
-        waitTime =0;
-        questionNum--; // Here we go back in the question number this can end up in a loop
+        waitTime =2000;
+        question= '1+1=?';
+        questionNum=questionNum + 6;
     }else{
       answer=' I did not understand you. Can you please answer with simply with yes or no.'
       question='';
@@ -188,6 +188,20 @@ function bot(data,socket,questionNum) {
       question='';
       questionNum--;
       waitTime =0;
+    }
+  // load next question
+  }
+  else if (questionNum == 9) {
+    if (input == 2){
+      answer = "Correct. Let's do something harder.";
+      waitTime = 2000;
+      question = "12 X 12 = ?";
+    }
+    else {
+      answer = "Try again.";
+      question='';
+      questionNum--;
+      waitTime = 0;
     }
   // load next question
   }
