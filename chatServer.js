@@ -86,10 +86,9 @@ function bot(data,socket,questionNum) {
       question = 'How about romance, yes?';
     }
     else if(input.toLowerCase()==='no'|| input===0){
-        socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
-        answer=''
+        answer= "That's fine. Let's find something else.";
+        waitTime =2000;
         question='How about now?';
-        waitTime =0;
         questionNum--; // Here we go back in the question number this can end up in a loop
     }else{
       answer=' I did not understand you. Can you please answer with simply with yes or no.'
@@ -106,11 +105,45 @@ function bot(data,socket,questionNum) {
       question = '';
     }
     else if(input.toLowerCase()==='no'|| input===0){
-        socket.emit('changeFont','white'); /// we really should look up the inverse of what we said befor.
-        answer=''
-        question='How about now?';
-        waitTime =0;
-        questionNum--; // Here we go back in the question number this can end up in a loop
+        answer = "That's fine. Let's find you something else.";
+        waitTime =2000;
+        question = 'You like action?';
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
+  }
+  else if (questionNum == 5) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = 'So drama and action... Let me ask you one more question.';
+      waitTime =3000;
+      question = 'History, yes or no?';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        answer = "That's fine. Let's find you something else.";
+        waitTime =2000;
+        question = 'You like action?';
+    }else{
+      answer=' I did not understand you. Can you please answer with simply with yes or no.'
+      question='';
+      questionNum--;
+      waitTime =0;
+    }
+  // load next question
+  }
+  else if (questionNum == 6) {
+    if(input.toLowerCase()==='yes'|| input===1){
+      answer = 'Drama, action, and history... I think I found one. "12 Strong". Very good movie. I think you will like it';
+      waitTime =0;
+      question = '';
+    }
+    else if(input.toLowerCase()==='no'|| input===0){
+        answer = "That's fine. Let's find you something else.";
+        waitTime =2000;
+        question = 'You like action?';
     }else{
       answer=' I did not understand you. Can you please answer with simply with yes or no.'
       question='';
