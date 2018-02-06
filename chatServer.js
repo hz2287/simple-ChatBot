@@ -141,9 +141,9 @@ function bot(data,socket,questionNum) {
       question = '';
     }
     else if(input.toLowerCase()==='no'|| input===0){
-        answer = "That's fine. Let's find you something else.";
-        waitTime =2000;
-        question = 'You like action?';
+        answer = "OK...You like drama and action, but not history. I think you'll enjoy Den of Thieves";
+        waitTime =0;
+        question = '';
     }else{
       answer=' I did not understand you. Can you please answer with simply with yes or no.'
       question='';
